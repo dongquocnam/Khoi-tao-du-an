@@ -34,6 +34,18 @@
         </div>
     </div>
 </template>
+<ContactCard :contact="activeContact" />
+<router-link
+    :to="{
+        name: 'contact.edit',
+        params: { id: activeContact._id },
+    }"
+>
+    <span class="mt-2 badge badge-warning">
+    <i class="fas fa-edit"></i> Hiệu chỉnh</span
+    >
+</router-link>
+
 <script>
 import ContactCard from "@/components/ContactCard.vue";
 import InputSearch from "@/components/InputSearch.vue";
@@ -46,17 +58,6 @@ export default {
         ContactList,
     },
     // Đoạn mã xử lý đầy đủ sẽ trình bày bên dưới
-};
-
-<style scoped>
-    .page {
-        text - align: left;
-    max-width: 750px;
-}
-</style>
-
-export default {
-
     data() {
         return {
             contacts: [],
@@ -124,5 +125,11 @@ export default {
         this.refreshList();
     },
 };
-
 </script>
+
+<style scoped>
+.page {
+    text-align: left;
+    max-width: 750px;
+}
+</style>
